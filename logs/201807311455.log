@@ -1,0 +1,11 @@
+2018-07-31 14:55:00,387 - BrowserEngine - INFO - You had select Chrome browser.
+2018-07-31 14:55:00,388 - BrowserEngine - INFO - The test server url is: https://www.mujin.common.private.consigner.com/#/Login
+2018-07-31 14:55:06,126 - BrowserEngine - INFO - Starting Chrome browser.
+2018-07-31 14:55:15,348 - BrowserEngine - INFO - Open url: https://www.mujin.common.private.consigner.com/#/Login
+2018-07-31 14:55:16,547 - BrowserEngine - INFO - Maximize the current window.
+2018-07-31 14:55:16,550 - BrowserEngine - INFO - Set implicitly wait 5 seconds.
+2018-07-31 14:55:21,566 - BasePage - ERROR - NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//*[@class='el-button el-button--primary el-button--mini']/span[text()='导入案件']"}
+  (Session info: chrome=65.0.3325.181)
+  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 6.1.7601 SP1 x86_64)
+
+2018-07-31 14:55:22,030 - BasePage - INFO - Had take screenshot and save to folder : /screenshots

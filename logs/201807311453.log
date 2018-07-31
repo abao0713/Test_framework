@@ -1,0 +1,6 @@
+2018-07-31 14:53:13,190 - BrowserEngine - INFO - You had select Chrome browser.
+2018-07-31 14:53:13,191 - BrowserEngine - INFO - The test server url is: https://www.mujin.common.private.consigner.com/#/Login
+2018-07-31 14:53:17,924 - BrowserEngine - INFO - Starting Chrome browser.
+2018-07-31 14:53:27,081 - BrowserEngine - INFO - Open url: https://www.mujin.common.private.consigner.com/#/Login
+2018-07-31 14:53:28,276 - BrowserEngine - INFO - Maximize the current window.
+2018-07-31 14:53:28,278 - BrowserEngine - INFO - Set implicitly wait 5 seconds.
