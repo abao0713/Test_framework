@@ -1,10 +1,11 @@
 import os.path
-
+from my_framework.log import Logger
 import yaml
+from time import sleep
 
 from my_framework.base_page import BasePage
 
-
+logger = Logger(logger="private_consigner_page").getlog()
 class private_consigner_page(BasePage):
     # 导入案件
     #proDir = os.path.split(os.path.realpath(__file__))[0]
@@ -19,15 +20,19 @@ class private_consigner_page(BasePage):
     #首先定义标准模板
     def import_case(self, type="standard"):
         #data = da["case_manager"]["select_module1"]
-        print(self.data_module1["import_case"]["button"])
+
         self.click(self.data_module1["import_case"]["button"])
         if type == "standard":
             self.click(self.data_module1["import_case"]["standard_template"])
-            self.click(self.data_module1["import_case"]["upload_file"]).send_keys("excel_path")
+            self.click(self.data_module1["import_case"]["upload_file"])
+            self.send_key(self.data_module1["import_case"]["upload_file"],"excel_path")
             self.click(self.data_module1["import_case"]["submit"])
+            sleep(5)
+            logger.info("Set implicitly wait 5 seconds.")
         else:
             # 暂时不写
-            self.click(self.data_module1["import_case"]["upload_file"]).send_keys("excel_path")
+            self.click(self.data_module1["import_case"]["upload_file"])
+            self.send_key(self.data_module1["import_case"]["upload_file"], "excel_path")
 
     # 输入模块和子模块，示例：案件管理/外访管理
     def module_select(self, module):

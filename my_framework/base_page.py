@@ -7,6 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 from my_framework.log import Logger
 
 
+
 # create a logger instance
 logger = Logger(logger="BasePage").getlog()
 
@@ -154,6 +155,13 @@ class BasePage(object):
             logger.error("Failed to click the element with %s" % e)
 
             # 或者网页标题
+    def send_key(self,selector,str):
+        el = self.find_element(selector)
+        try:
+            el.send_keys(str)
+            logger.info("The string \' %s \' was send." % el.text)
+        except NameError as e:
+            logger.error("Failed to send the string with %s" % e)
 
     def get_page_title(self):
         logger.info("Current page title is %s" % self.driver.title)
