@@ -1,4 +1,4 @@
-from my_framework.login_lingout import login_logout
+from pageobjects.login_logout import login_logout
 from my_framework.select_browser import BrowserEngine
 import unittest
 from pageobjects.mujin_consigner_private import private_consigner_page

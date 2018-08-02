@@ -15,7 +15,7 @@ class private_consigner_page(BasePage):
     fs = open(file_path,'r',encoding="utf-8")
     da = yaml.load(fs.read())
     fs.close()
-    data_module1 = da["case_manager"]
+    data_module1 = da["case_manager"]["select_module1"]
 
     #首先定义标准模板
     def import_case(self, type="standard"):
@@ -25,7 +25,7 @@ class private_consigner_page(BasePage):
         if type == "standard":
             self.click(self.data_module1["import_case"]["standard_template"])
             self.click(self.data_module1["import_case"]["upload_file"])
-            self.send_key(self.data_module1["import_case"]["upload_file"],"excel_path")
+            self.send_key(self.data_module1["import_case"]["upload_file"],self.excel_path)
             self.click(self.data_module1["import_case"]["submit"])
             sleep(5)
             logger.info("Set implicitly wait 5 seconds.")
@@ -43,6 +43,9 @@ class private_consigner_page(BasePage):
             module_child = module.split('/')[1]
             self.click(self.da[module_father]["element"])
             self.click(self.da[module_father][module_child])
+    def case_search(self,):
+        pass
+
 if __name__ == '__main__':
     a = private_consigner_page(BasePage)
     a.import_case()
