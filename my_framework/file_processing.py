@@ -1,5 +1,10 @@
 import xlrd
+from my_framework.log import Logger
+import time
+import os
 
+# create a logger instance
+logger = Logger(logger="file_process").getlog()
 
 class file_process():
     """封装操作excel的方法"""
@@ -14,7 +19,7 @@ class file_process():
     # 获取某一页sheet对象
     def get_data(self):
         data = xlrd.open_workbook(self.file)
-        sheet = data.sheet_by_index(self.sheet_id)
+        sheet = data.sheet_by_index(self.sheet_id,cell_overwrite_ok=True)
         return sheet
 
     # 获取excel数据行数
@@ -30,13 +35,25 @@ class file_process():
         return value
 
     # 向某个单元格写入数据
-    def write_value(self):
-        data.write(0, 0, 'this should overwrite1')
+    def write_value(self,srt):
+
+        self.get_data().write(0, 0, srt)
+    #定位需要写入的位置
+    def location(self,line,column,str):
+        """
+        :param line: 定位需要写入的行
+        :param column:定位需要写入的列
+        :param str:需要写入的字符
+        :return:
+        """
+        data.write(line, column, srt)
+#        logger.info("success writing %s",%str)
+#封装需要写入的常量
 
 
 # 封装excel的列名常量
 def get_bill_code():
-    """获取caseSeq"""
+    """获取bill_code"""
     caseSeq = 0
     return caseSeq
 
@@ -100,8 +117,25 @@ def get_expectvalue():
     return expect
 
 
+def set_bill_code():
+    da = time.strftime("%Y-%m-%d/%H:%M:%S", time.localtime())
+    da_a =da.split('/')[0]
+    da_b =da.split('/')[1]
+    print(da_a)
+    print(da_b)
+    a = file_process()
+    for i in range(1,6):
+        a.get_data().write(i, 1, str = (da_a+"00"+i))
+        logger.info("success writing s%" %str)
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
-    test = HandleExcel()
-    print(test.get_data())
-    print(test.get_rows())
-    print(test.get_value(0, 0))
+    #a=file_process()
+    set_bill_code()
