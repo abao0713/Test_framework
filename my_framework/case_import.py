@@ -174,6 +174,31 @@ class file_process():
             loan_institutions.append(ff)
         return commit_dates,limit_dates,product_types,borrower_idnumbers,borrower_phones,loan_institutions
 
+    #找到指定文件删除
+    """
+    1、找到文件名称放入列表
+    2、列表搜索然后
+    """
+    def clearn_data(self):
+        lrst = []
+        for file in os.listdir(path):
+            lrst.append(file)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     a=file_process()
     a.create_excel_file()
