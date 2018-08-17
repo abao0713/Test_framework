@@ -175,11 +175,12 @@ class file_process():
         return commit_dates,limit_dates,product_types,borrower_idnumbers,borrower_phones,loan_institutions
 
     #找到指定文件删除
+    def clear_data(self):
     """
     1、找到文件名称放入列表
-    2、列表搜索然后
+    2、列表搜索然后去除当前日期的文件
+
     """
-    def clearn_data(self):
         lrst = []
         for file in os.listdir(path):
             lrst.append(file)
