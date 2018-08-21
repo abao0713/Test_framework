@@ -35,15 +35,7 @@ class login_logout(BasePage):
         logger.info("Set time wait 2 seconds.")
 
     def logout_consigner(self):
-        self.driver = driver
-        element = self.data["logout"]["location"]
+        element = self.find_element(self.data["logout"]["location"])
         ActionChains(self.driver).move_to_element(element).perform()
-        element2 = self.data["logout"]["out"]
+        element2 = self.find_element(self.data["logout"]["out"])
         ActionChains(self.driver).click(element2).perform()
-
-
-
-if __name__ == '__main__':
-    a = login_logout(BasePage)
-    a.login_consigner()
-    a.logout_consigner()

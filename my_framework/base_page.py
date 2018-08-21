@@ -7,7 +7,6 @@ from selenium.common.exceptions import NoSuchElementException
 from my_framework.log import Logger
 
 
-
 # create a logger instance
 logger = Logger(logger="BasePage").getlog()
 

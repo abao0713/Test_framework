@@ -15,6 +15,8 @@ class Case_manager(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
+        a = login_logout(cls.driver)
+        a.logout_consigner()
 
     def test_import_case(self):
         #self.module
