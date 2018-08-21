@@ -10,7 +10,7 @@ class private_consigner_page(BasePage):
     # 导入案件
     #proDir = os.path.split(os.path.realpath(__file__))[0]
     #configPath = os.path.join(proDir, "config.ini")
-    file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\element.yaml'
+    file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\consigner_element.yaml'
     excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import.xlsx'
     fs = open(file_path,'r',encoding="utf-8")
     da = yaml.load(fs.read())

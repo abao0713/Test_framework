@@ -2,15 +2,16 @@ from my_framework.log import Logger
 import os.path
 from configparser import ConfigParser
 from my_framework.base_page import BasePage
+#from my_framework.select_browser import BrowserEngine
 from time import sleep
 import yaml
+from selenium.webdriver.common.action_chains import ActionChains
 
 # create a logger instance
 logger = Logger(logger="login_logout").getlog()
 class login_logout(BasePage):
-
-    file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\element.yaml'
-    fs = open(file_path, 'r', encoding="utf-8")
+    yaml_path = os.path.dirname(os.path.abspath('.')) + '\config_file\consigner_element.yaml'
+    fs = open(yaml_path, 'r', encoding="utf-8")
     data = yaml.load(fs.read())
     fs.close()
     def login_consigner(self):
@@ -34,8 +35,15 @@ class login_logout(BasePage):
         logger.info("Set time wait 2 seconds.")
 
     def logout_consigner(self):
-        pass
+        self.driver = driver
+        element = self.data["logout"]["location"]
+        ActionChains(self.driver).move_to_element(element).perform()
+        element2 = self.data["logout"]["out"]
+        ActionChains(self.driver).click(element2).perform()
+
+
 
 if __name__ == '__main__':
     a = login_logout(BasePage)
     a.login_consigner()
+    a.logout_consigner()
