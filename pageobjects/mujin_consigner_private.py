@@ -2,7 +2,7 @@ import os.path
 from my_framework.log import Logger
 import yaml
 from time import sleep
-
+from my_framework.file_case_import import file_process
 from my_framework.base_page import BasePage
 
 logger = Logger(logger="private_consigner_page").getlog()
@@ -11,7 +11,10 @@ class private_consigner_page(BasePage):
     #proDir = os.path.split(os.path.realpath(__file__))[0]
     #configPath = os.path.join(proDir, "config.ini")
     file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\element_consigner.yaml'
-    excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import.xlsx'
+    excel = file_process()
+    file_name = excel.create_excel_file()
+    excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
+    ecl = os.path.join(excel_path, file_name)
     fs = open(file_path,'r',encoding="utf-8")
     da = yaml.load(fs.read())
     fs.close()
@@ -26,7 +29,7 @@ class private_consigner_page(BasePage):
         if type == "standard":
             self.click(self.data_module1["import_case"]["standard_template"])
             self.click(self.data_module1["import_case"]["upload_file"])
-            self.send_key(self.data_module1["import_case"]["upload_file"],self.excel_path)
+            self.send_key(self.data_module1["import_case"]["upload_file"],self.ecl)
             self.click(self.data_module1["import_case"]["submit"])
             sleep(5)
             logger.info("Set implicitly wait 5 seconds.")

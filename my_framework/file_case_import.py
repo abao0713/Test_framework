@@ -87,7 +87,7 @@ class file_process():
         brrower_name = self.create_data_name(data_num)  # 获取5个随机字符
         self.write_data(brrower_name, i, line=0)
         book.save(ecl)
-
+        return filename
     def write_data(self,lst,num,line=0):
         """
 
