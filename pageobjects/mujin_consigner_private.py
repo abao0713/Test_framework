@@ -17,11 +17,12 @@ class private_consigner_page(BasePage):
     fs.close()
     data_module1 = da["case_manager"]["select_module1"]
 
-    #首先定义标准模板
+    #选择模板
     def import_case(self, type="standard"):
         #data = da["case_manager"]["select_module1"]
 
         self.click(self.data_module1["import_case"]["button"])
+        # 首先定义标准模板
         if type == "standard":
             self.click(self.data_module1["import_case"]["standard_template"])
             self.click(self.data_module1["import_case"]["upload_file"])
@@ -29,12 +30,13 @@ class private_consigner_page(BasePage):
             self.click(self.data_module1["import_case"]["submit"])
             sleep(5)
             logger.info("Set implicitly wait 5 seconds.")
+        #定义自定义模板
         else:
             # 暂时不写
             self.click(self.data_module1["import_case"]["upload_file"])
             self.send_key(self.data_module1["import_case"]["upload_file"], "excel_path")
 
-    # 输入模块和子模块，示例：案件管理/外访管理
+    # 输入模块和子模块，示例：案件管理/外访管理（需重写）
     def module_select(self, module):
         if "/" not in module:
             self.click(self.da["module"])
@@ -44,7 +46,7 @@ class private_consigner_page(BasePage):
             self.click(self.da[module_father]["element"])
             self.click(self.da[module_father][module_child])
     def case_search(self,):
-        pass
+
 
 if __name__ == '__main__':
     a = private_consigner_page(BasePage)
