@@ -12,6 +12,7 @@ def location_element(da,location):
         return da[locations]
 
 if __name__ == '__main__':
+    #实列
     da = {'name': 'Silenthand Olleander',
             'race': 'Human',
             'traits': {'ONE_HAND':'beijing'}

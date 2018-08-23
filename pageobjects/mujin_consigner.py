@@ -5,8 +5,8 @@ from time import sleep
 from my_framework.file_case_import import file_process
 from my_framework.base_page import BasePage
 
-logger = Logger(logger="private_consigner_page").getlog()
-class private_consigner_page(BasePage):
+logger = Logger(logger="consigner_page").getlog()
+class consigner_page(BasePage):
     # 导入案件
     #proDir = os.path.split(os.path.realpath(__file__))[0]
     #configPath = os.path.join(proDir, "config.ini")

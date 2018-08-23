@@ -43,7 +43,7 @@ class file_process():
 
 
         # 数据导入的条数
-        data_num = 5
+        data_num = 500
         # 进件号写入
         bill_code = self.create_data_billcode(data_num)#获取5个随机字符
         j = self.title_local(u'进件号')
@@ -110,9 +110,11 @@ class file_process():
     #进件号生成的随机算法
     def create_data_billcode(self,number):
         lrst=[]
-        la = ['SZ','PH','HW','KL','WE','TY','DH']
+        la = ['SZ','PH','HW','KL','WE','TY','DH','Z','H','W','L','E','Y','Q','SZK',
+              'PHK','HWK','KLK','WEK','TYK','DHK','SRZ','PRH','HRW','KRL','WRE','TRY',
+              'DRH','SLZ','PLH','HLW','KLL','WLE','TLY','DLH','SZL','PHL','HWL','KLL','WEL','TYL','DHL']
         for a in range(1,number+1):
-            i = str(random.randint(0, 1000))
+            i = str(random.randint(0, 10000))
             j = random.choice(la)
             ha = j + '-' + self.da_a + '-' + i
             lrst.append(ha)
@@ -174,16 +176,24 @@ class file_process():
             loan_institutions.append(ff)
         return commit_dates,limit_dates,product_types,borrower_idnumbers,borrower_phones,loan_institutions
 
-    #找到指定文件删除
+    #将不是今天生成的文件删除
     def clear_data(self):
-    """
-    1、找到文件名称放入列表
-    2、列表搜索然后去除当前日期的文件
 
-    """
+        da = time.strftime("%Y.%m.%d/%H-%M-%S", time.localtime())
+        da_a = str(da.split('/')[0])
+        path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
         lrst = []
         for file in os.listdir(path):
-            lrst.append(file)
+            if da_a not in file:
+                lrst.append(file)
+        if len(lrst) == 0:
+            logger.info("没有需要删除的历史文件")
+        else:
+            for file in lrst:
+                os.remove(os.path.join(path,file))
+
+
+
 
 
 
@@ -203,4 +213,5 @@ class file_process():
 if __name__ == '__main__':
     a=file_process()
     a.create_excel_file()
+    a.clear_data()
 

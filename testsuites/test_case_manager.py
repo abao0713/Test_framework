@@ -1,7 +1,7 @@
 from pageobjects.login_logout import login_logout
 from my_framework.select_browser import BrowserEngine
 import unittest
-from pageobjects.mujin_consigner_private import private_consigner_page
+from pageobjects.mujin_consigner import private_consigner_page
 
 
 class Case_manager(unittest.TestCase):
