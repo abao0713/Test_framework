@@ -1,5 +1,11 @@
 
 def location_element(da,location):
+    """
+
+    :param da:
+    :param location: 'elemm=>traits/ONE_HAND',文件名+=>+位置
+    :return:
+    """
     element_file_name = location.split('=>')[0]
     print(element_file_name)
     locations = location.split('=>')[1]

@@ -15,7 +15,7 @@ class file_process():
         self.da_b = str(da.split('/')[1])
         filename = "case_import"+(self.da_a+'-'+self.da_b).replace('-','.')+".xls"
         excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
-        ecl =os.path.join(excel_path,filename)
+        self.ecl =os.path.join(excel_path,filename)
 
         book = xlwt.Workbook(encoding = 'utf-8')
         self.sheet1 = book.add_sheet('Sheet 1',cell_overwrite_ok = True)
@@ -86,7 +86,7 @@ class file_process():
         i = self.title_local(u'姓名')
         brrower_name = self.create_data_name(data_num)  # 获取5个随机字符
         self.write_data(brrower_name, i, line=0)
-        book.save(ecl)
+        book.save(self.ecl)
         return filename
     def write_data(self,lst,num,line=0):
         """
@@ -177,7 +177,7 @@ class file_process():
         return commit_dates,limit_dates,product_types,borrower_idnumbers,borrower_phones,loan_institutions
 
     #将不是今天生成的文件删除
-    def clear_data(self):
+    def clear_file(self):
 
         da = time.strftime("%Y.%m.%d/%H-%M-%S", time.localtime())
         da_a = str(da.split('/')[0])
@@ -191,7 +191,14 @@ class file_process():
         else:
             for file in lrst:
                 os.remove(os.path.join(path,file))
-
+    #注意返回的了lsrt是包含标题的
+    def get_data(self,module):
+        lsrt = []
+        line = self.title_local(module)
+        ExcelFile = xlrd.open_workbook(self.ecl)
+        sheet = ExcelFile.sheet_by_index(0)
+        lsrt = sheet.col_values(line)#module列内容
+        return lsrt
 
 
 
@@ -213,5 +220,5 @@ class file_process():
 if __name__ == '__main__':
     a=file_process()
     a.create_excel_file()
-    a.clear_data()
-
+    a.clear_file()
+    a.get_data(u'姓名')
