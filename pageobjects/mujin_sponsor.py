@@ -2,7 +2,6 @@ import os.path
 from my_framework.log import Logger
 import yaml
 from my_framework.file_case_import import file_process
-from my_framework.file_case_import import file_process
 from my_framework.element_location import location_element
 from my_framework.base_page import BasePage
 logger = Logger(logger="sponsor_page").getlog()
@@ -20,11 +19,24 @@ class sponsor_page(BasePage):
     fs.close()
 
     def case_dispense(self):
-        location = 'element_sponsor=>case_manager/select_module1/search_case/bill_code'
+        name = 'element_sponsor=>case_manager/select_module1/search_case/name'
+        search = 'element_sponsor=>case_manager/select_module1/search_case/search'
+        select = 'element_sponsor=>case_manager/select_module1/search_case/select'
+        button = 'element_sponsor=>case_manager/select_module1/case_dispense/button'
+        organs = 'element_sponsor=>case_manager/select_module1/case_dispense/organs'
+        organ_select = 'element_sponsor=>case_manager/select_module1/case_dispense/organ_select'
+        submit = 'element_sponsor=>case_manager/select_module1/case_dispense/submit'
         lrst = file_process.get_data(u'姓名')
-        for name in lrst:
+        for lrst in lrst:
 
-            self.clear(location_element(da,location))
-            self.send_key(location_element(da,location))
+            self.clear(location_element(da,name))
+            self.send_key(location_element(da,name),lrst)
+            self.click(location_element(da,search))
+            self.click(location_element(da,select))
+            self.click(location_element(da,button))
+            self.click(location_element(da,organs))
+            self.click(location_element(da,organ_select))
+            self.click(location_element(da,submit))
+
 
 
