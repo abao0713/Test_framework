@@ -1,7 +1,7 @@
 from pageobjects.login_logout import login_logout
 from my_framework.select_browser import BrowserEngine
 import unittest
-from pageobjects.mujin_consigner import private_consigner_page
+from pageobjects.mujin_consigner import consigner_page
 
 
 class Case_manager(unittest.TestCase):
@@ -20,7 +20,7 @@ class Case_manager(unittest.TestCase):
 
     def test_import_case(self):
         #self.module
-        homepage = private_consigner_page(self.driver)
+        homepage = consigner_page(self.driver)
         homepage.module_select("case_manager/select_module1")
         homepage.import_case()
 

@@ -10,19 +10,19 @@ from selenium.webdriver.common.action_chains import ActionChains
 # create a logger instance
 logger = Logger(logger="login_logout").getlog()
 class login_logout(BasePage):
-    yaml_consigner = os.path.dirname(os.path.abspath('.')) + '\config_file\element_consigner.yaml'
-    yaml_assignee = os.path.dirname(os.path.abspath('.')) + '\config_file\element_assignee.yaml'
-    yaml_sponsor = os.path.dirname(os.path.abspath('.')) + '\config_file\element_sponsor.yaml'
+    yaml_consigner = os.path.dirname(os.path.abspath('__file__')) + '\config_file\element_consigner.yaml'
+    yaml_assignee = os.path.dirname(os.path.abspath('__file__')) + '\config_file\element_assignee.yaml'
+    yaml_sponsor = os.path.dirname(os.path.abspath('__file__')) + '\config_file\element_sponsor.yaml'
     #读取委案方元素定位文件
     fs_consigner = open(yaml_consigner, 'r', encoding="utf-8")
     data = yaml.load(fs_consigner.read())
     fs_consigner.close()
     # 读取催收方元素定位文件
-    fs_assignee = open(yaml_consigner, 'r', encoding="utf-8")
+    fs_assignee = open(yaml_assignee, 'r', encoding="utf-8")
     data_assignee = yaml.load(fs_assignee.read())
     fs_assignee.close()
     # 读取平台方元素定位文件
-    fs_sponsor = open(yaml_consigner, 'r', encoding="utf-8")
+    fs_sponsor = open(yaml_sponsor, 'r', encoding="utf-8")
     data_sponsor = yaml.load(fs_sponsor.read())
     fs_sponsor.close()
 
@@ -31,7 +31,7 @@ class login_logout(BasePage):
         #self.driver = browser.open_browser(self)
         config = ConfigParser()
         # file_path = os.path.dirname(os.getcwd()) + '/config_file/config.ini'
-        file_path = os.path.dirname(os.path.abspath('.')) + '/config_file/config.ini'
+        file_path = os.path.dirname(os.path.abspath('__file__')) + '/config_file/config.ini'
         config.read(file_path)
 
         username = config.get("userinfo", "c_username")

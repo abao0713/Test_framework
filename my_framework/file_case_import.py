@@ -14,7 +14,7 @@ class file_process():
         self.da_a = str(da.split('/')[0])
         self.da_b = str(da.split('/')[1])
         filename = "case_import"+(self.da_a+'-'+self.da_b).replace('-','.')+".xls"
-        excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
+        excel_path = os.path.dirname(os.path.abspath('__file__')) + '\config_file\case_import'
         self.ecl =os.path.join(excel_path,filename)
 
         book = xlwt.Workbook(encoding = 'utf-8')
@@ -43,7 +43,7 @@ class file_process():
 
 
         # 数据导入的条数
-        data_num = 500
+        data_num = 6
         # 进件号写入
         bill_code = self.create_data_billcode(data_num)#获取5个随机字符
         j = self.title_local(u'进件号')

@@ -10,10 +10,10 @@ class consigner_page(BasePage):
     # 导入案件
     #proDir = os.path.split(os.path.realpath(__file__))[0]
     #configPath = os.path.join(proDir, "config.ini")
-    file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\element_consigner.yaml'
+    file_path = os.path.dirname(os.path.abspath('__file__')) + '\config_file\element_consigner.yaml'
     excel = file_process()
     file_name = excel.create_excel_file()
-    excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
+    excel_path = os.path.dirname(os.path.abspath('__file__')) + '\config_file\case_import'
     ecl = os.path.join(excel_path, file_name)
     fs = open(file_path,'r',encoding="utf-8")
     da = yaml.load(fs.read())
@@ -23,8 +23,8 @@ class consigner_page(BasePage):
     #选择模板
     def import_case(self, type="standard"):
         #data = da["case_manager"]["select_module1"]
-
         self.click(self.data_module1["import_case"]["button"])
+
         # 首先定义标准模板
         if type == "standard":
             self.click(self.data_module1["import_case"]["standard_template"])
@@ -48,9 +48,9 @@ class consigner_page(BasePage):
             module_child = module.split('/')[1]
             self.click(self.da[module_father]["element"])
             self.click(self.da[module_father][module_child])
-    def case_search(self,):
+    #def case_search(self,):
 
 
 if __name__ == '__main__':
-    a = private_consigner_page(BasePage)
+    a = consigner_page(BasePage)
     a.import_case()
