@@ -6,7 +6,7 @@ from my_framework.element_location import location_element
 from my_framework.base_page import BasePage
 logger = Logger(logger="sponsor_page").getlog()
 class sponsor_page(BasePage):
-    # 平台方分发案件
+
     # proDir = os.path.split(os.path.realpath(__file__))[0]
     # configPath = os.path.join(proDir, "config.ini")
     file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\element_sponsor.yaml'
@@ -18,6 +18,7 @@ class sponsor_page(BasePage):
     da = yaml.load(fs.read())
     fs.close()
 
+    # 平台方分发案件
     def case_dispense(self):
         name = 'element_sponsor=>case_manager/select_module1/search_case/name'
         search = 'element_sponsor=>case_manager/select_module1/search_case/search'
@@ -27,10 +28,9 @@ class sponsor_page(BasePage):
         organ_select = 'element_sponsor=>case_manager/select_module1/case_dispense/organ_select'
         submit = 'element_sponsor=>case_manager/select_module1/case_dispense/submit'
         lrst = file_process.get_data(u'姓名')
-        for lrst in lrst:
-
+        for i in range(1,len(lrst)):
             self.clear(location_element(da,name))
-            self.send_key(location_element(da,name),lrst)
+            self.send_key(location_element(da,name),lrst[i])
             self.click(location_element(da,search))
             self.click(location_element(da,select))
             self.click(location_element(da,button))
