@@ -10,9 +10,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 # create a logger instance
 logger = Logger(logger="login_logout").getlog()
 class login_logout(BasePage):
-    yaml_consigner = os.path.dirname(os.path.abspath('__file__')) + '\config_file\element_consigner.yaml'
-    yaml_assignee = os.path.dirname(os.path.abspath('__file__')) + '\config_file\element_assignee.yaml'
-    yaml_sponsor = os.path.dirname(os.path.abspath('__file__')) + '\config_file\element_sponsor.yaml'
+    yaml_consigner = os.path.dirname(os.path.abspath('.')) + '\config_file\element_consigner.yaml'
+    yaml_assignee = os.path.dirname(os.path.abspath('.')) + '\config_file\element_assignee.yaml'
+    yaml_sponsor = os.path.dirname(os.path.abspath('.')) + '\config_file\element_sponsor.yaml'
     #读取委案方元素定位文件
     fs_consigner = open(yaml_consigner, 'r', encoding="utf-8")
     data = yaml.load(fs_consigner.read())
@@ -31,7 +31,7 @@ class login_logout(BasePage):
         #self.driver = browser.open_browser(self)
         config = ConfigParser()
         # file_path = os.path.dirname(os.getcwd()) + '/config_file/config.ini'
-        file_path = os.path.dirname(os.path.abspath('__file__')) + '/config_file/config.ini'
+        file_path = os.path.dirname(os.path.abspath('.')) + '/config_file/config.ini'
         config.read(file_path)
 
         username = config.get("userinfo", "c_username")

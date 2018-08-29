@@ -14,7 +14,7 @@ class file_process():
         self.da_a = str(da.split('/')[0])
         self.da_b = str(da.split('/')[1])
         filename = "case_import"+(self.da_a+'-'+self.da_b).replace('-','.')+".xls"
-        excel_path = os.path.dirname(os.path.abspath('__file__')) + '\config_file\case_import'
+        excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
         self.ecl =os.path.join(excel_path,filename)
 
         book = xlwt.Workbook(encoding = 'utf-8')

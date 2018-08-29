@@ -10,10 +10,10 @@ class consigner_page(BasePage):
     # 导入案件
     #proDir = os.path.split(os.path.realpath(__file__))[0]
     #configPath = os.path.join(proDir, "config.ini")
-    file_path = os.path.dirname(os.path.abspath('__file__')) + '\config_file\element_consigner.yaml'
+    file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\element_consigner.yaml'
     excel = file_process()
     file_name = excel.create_excel_file()
-    excel_path = os.path.dirname(os.path.abspath('__file__')) + '\config_file\case_import'
+    excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
     ecl = os.path.join(excel_path, file_name)
     fs = open(file_path,'r',encoding="utf-8")
     da = yaml.load(fs.read())
