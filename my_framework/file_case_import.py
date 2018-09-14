@@ -43,7 +43,7 @@ class file_process():
 
 
         # 数据导入的条数
-        data_num = 6
+        data_num = 600
         # 进件号写入
         bill_code = self.create_data_billcode(data_num)#获取5个随机字符
         j = self.title_local(u'进件号')
@@ -112,11 +112,32 @@ class file_process():
         lrst=[]
         la = ['SZ','PH','HW','KL','WE','TY','DH','Z','H','W','L','E','Y','Q','SZK',
               'PHK','HWK','KLK','WEK','TYK','DHK','SRZ','PRH','HRW','KRL','WRE','TRY',
-              'DRH','SLZ','PLH','HLW','KLL','WLE','TLY','DLH','SZL','PHL','HWL','KLL','WEL','TYL','DHL']
+              'DRH','SLZ','PLH','HLW','KLL','WLE','TLY','DLH','SZL','PHL','HWL','KLL','WEL','TYL','DHL'
+                                                                                                  'DRH', 'SLkZ', 'PkLH',
+              'HLkW', 'KLkL', 'WLkE', 'TLkY', 'DLkH', 'SkZL', 'PkHL', 'HWkL', 'KLkL', 'WEkL', 'TkYL', 'DkHL']
+        la1 = ['SZ', 'PH', 'HW', 'KL', 'WE', 'TY', 'DH', 'Z', 'H', 'W', 'L', 'E', 'Y', 'Q', 'SZK',
+              'PHK', 'HWK', 'KLK', 'WEK', 'TYK', 'DHK', 'SRZ', 'PRH', 'HRW', 'KRL', 'WRE', 'TRY',
+              'DRH', 'SLZ', 'PLH', 'HLW', 'KLL', 'WLE', 'TLY', 'DLH', 'SZL', 'PHL', 'HWL', 'KLL', 'WEyL', 'TyYL', 'DyHL'
+                                                                                                                ,'DyRH',
+              'SLkZ', 'PkLH',
+              'HLkW', 'KLkL', 'WLkE', 'TLkY', 'DLkH', 'SkZL', 'PkHL', 'HWkL', 'KLkL', 'WEkL', 'TkYL', 'DkHL'
+                                                                                                      'SZ', 'PH', 'HW',
+              'K2L', 'W2E', 'T2Y', 'D2H', '2Z', '2H', '2W', '2L', '2E', '2Y', '2Q', '2SZK',
+              'PHK', 'HWK', 'KLK', 'WEK', 'TYK', 'DHK', 'SRZ', 'PRH', 'HRW', 'KRL', 'WRE', 'TRY',
+              'DRH', 'SLZ', 'PLH', 'HLW', 'KLL', 'WLE', 'TLY', 'DLH', 'SZL', 'PHL', 'HWL', 'KLL', 'WEyL', 'TyYL',
+
+
+
+
+
+
+              ]
         for a in range(1,number+1):
-            i = str(random.randint(0, 10000))
-            j = random.choice(la)
-            ha = j + '-' + self.da_a + '-' + i
+            i = str(random.randint(0, 1000000000000))
+            for j in la:
+                jk=j
+            j = random.choice(la1)
+            ha = jk + '-' + self.da_a + '-' + i+j
             lrst.append(ha)
         return lrst
     #姓名生成的随机算法
@@ -220,5 +241,4 @@ class file_process():
 if __name__ == '__main__':
     a=file_process()
     a.create_excel_file()
-    a.clear_file()
-    a.get_data(u'姓名')
+

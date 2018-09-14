@@ -6,19 +6,20 @@ from my_framework.element_location import location_element
 from my_framework.base_page import BasePage
 logger = Logger(logger="assignee_page").getlog()
 class assignee_page(BasePage):
-    def __init__(self):
 
 
-        # proDir = os.path.split(os.path.realpath(__file__))[0]
-        # configPath = os.path.join(proDir, "config.ini")
-        file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\element_assignee.yaml'
-        excel = file_process()
-        file_name = excel.create_excel_file()
-        excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
-        ecl = os.path.join(excel_path, file_name)
-        fs = open(file_path, 'r', encoding="utf-8")
-        self.da = yaml.load(fs.read())
-        fs.close()
+
+
+    # proDir = os.path.split(os.path.realpath(__file__))[0]
+    # configPath = os.path.join(proDir, "config.ini")
+    file_path = os.path.dirname(os.path.abspath('.')) + '\config_file\element_assignee.yaml'
+    excel = file_process()
+    file_name = excel.create_excel_file()
+    excel_path = os.path.dirname(os.path.abspath('.')) + '\config_file\case_import'
+    ecl = os.path.join(excel_path, file_name)
+    fs = open(file_path, 'r', encoding="utf-8")
+    da = yaml.load(fs.read())
+    fs.close()
     # 催收方分发案件(需要采用select的方法)
     def case_dispense(self,num='1'):
         """
@@ -40,8 +41,8 @@ class assignee_page(BasePage):
             self.case_search(lrst[i],location)
 
             if num == '1':
-                self.click(location_element(self.da,select))
-                self.click(location_element(self.da,button1))
+                self.click(location_element(self.da, select))
+                self.click(location_element(self.da, button1))
             elif num == '2':
                 self.click(location_element(self.da, select))
                 self.click(location_element(self.da, button2))
